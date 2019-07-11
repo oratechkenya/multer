@@ -1,11 +1,11 @@
 import { IncomingMessage, ServerResponse } from 'http'
 import { FastifyReply } from 'fastify'
 import { ExtendedFastifyRequest } from './file-appender'
-import is from 'type-is'
-import Busboy from 'busboy'
-import extend from 'xtend'
-import onFinished from 'on-finished'
-import appendField from 'append-field'
+import * as is from 'type-is'
+import * as Busboy from 'busboy'
+import * as extend from 'xtend'
+import * as onFinished from 'on-finished'
+import appendField = require('append-field')
 
 import Counter from './counter'
 import MulterError, { ErrorMessages } from './multer-error'

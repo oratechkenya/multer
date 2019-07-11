@@ -1,5 +1,5 @@
 import { IncomingMessage } from 'http'
-import fp, { PluginOptions, nextCallback } from 'fastify-plugin'
+import * as fp from 'fastify-plugin'
 import { FastifyInstance, FastifyRequest } from 'fastify'
 
 const kMultipart = Symbol('multipart')
@@ -14,7 +14,7 @@ export function isMultipart(this: FastifyRequest<IncomingMessage>): boolean {
   return this.req[kMultipart] || false
 }
 
-function fastifyMulter(fastify: FastifyInstance, options: PluginOptions, next: nextCallback) {
+function fastifyMulter(fastify: FastifyInstance, options: fp.PluginOptions, next: fp.nextCallback) {
   fastify.addContentTypeParser('multipart', setMultipart)
   fastify.decorateRequest('isMultipart', isMultipart)
 
