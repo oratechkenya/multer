@@ -1,6 +1,6 @@
 # Fastify Multer
 
-This package is a port to Fastify of [express multer](https://github.com/expressjs/multer).
+This package is a port to Fastify of [express multer](https://github.com/expressjs/multer), based on [fox1t/multer](https://github.com/fox1t/multer) original fork, modified to allow TypeScript to compile without specifying `esModuleInterop` compiler flag option.
 
 Multer is a Fastify plugin for handling `multipart/form-data`, which is primarily used for uploading files. It is written
 on top of [busboy](https://github.com/mscdex/busboy) for maximum efficiency.
@@ -101,17 +101,17 @@ server.route({
 
 Each file contains the following information:
 
-Key | Description | Note
---- | --- | ---
-`fieldname` | Field name specified in the form |
-`originalname` | Name of the file on the user's computer |
-`encoding` | Encoding type of the file |
-`mimetype` | Mime type of the file |
-`size` | Size of the file in bytes |
-`destination` | The folder to which the file has been saved | `DiskStorage`
-`filename` | The name of the file within the `destination` | `DiskStorage`
-`path` | The full path to the uploaded file | `DiskStorage`
-`buffer` | A `Buffer` of the entire file | `MemoryStorage`
+| Key            | Description                                   | Note            |
+| -------------- | --------------------------------------------- | --------------- |
+| `fieldname`    | Field name specified in the form              |
+| `originalname` | Name of the file on the user's computer       |
+| `encoding`     | Encoding type of the file                     |
+| `mimetype`     | Mime type of the file                         |
+| `size`         | Size of the file in bytes                     |
+| `destination`  | The folder to which the file has been saved   | `DiskStorage`   |
+| `filename`     | The name of the file within the `destination` | `DiskStorage`   |
+| `path`         | The full path to the uploaded file            | `DiskStorage`   |
+| `buffer`       | A `Buffer` of the entire file                 | `MemoryStorage` |
 
 ### `multer(opts)`
 
@@ -124,12 +124,12 @@ renaming function can be customized according to your needs.
 
 The following are the options that can be passed to Multer.
 
-Key | Description
---- | ---
-`dest` or `storage` | Where to store the files
-`fileFilter` | Function to control which files are accepted
-`limits` | Limits of the uploaded data
-`preservePath` | Keep the full path of files instead of just the base name
+| Key                 | Description                                               |
+| ------------------- | --------------------------------------------------------- |
+| `dest` or `storage` | Where to store the files                                  |
+| `fileFilter`        | Function to control which files are accepted              |
+| `limits`            | Limits of the uploaded data                               |
+| `preservePath`      | Keep the full path of files instead of just the base name |
 
 In an average web app, only `dest` might be required, and configured as shown in
 the following example.
@@ -250,15 +250,15 @@ An object specifying the size limits of the following optional properties. Multe
 
 The following integer values are available:
 
-Key | Description | Default
---- | --- | ---
-`fieldNameSize` | Max field name size | 100 bytes
-`fieldSize` | Max field value size | 1MB
-`fields` | Max number of non-file fields | Infinity
-`fileSize` | For multipart forms, the max file size (in bytes) | Infinity
-`files` | For multipart forms, the max number of file fields | Infinity
-`parts` | For multipart forms, the max number of parts (fields + files) | Infinity
-`headerPairs` | For multipart forms, the max number of header key=>value pairs to parse | 2000
+| Key             | Description                                                             | Default   |
+| --------------- | ----------------------------------------------------------------------- | --------- |
+| `fieldNameSize` | Max field name size                                                     | 100 bytes |
+| `fieldSize`     | Max field value size                                                    | 1MB       |
+| `fields`        | Max number of non-file fields                                           | Infinity  |
+| `fileSize`      | For multipart forms, the max file size (in bytes)                       | Infinity  |
+| `files`         | For multipart forms, the max number of file fields                      | Infinity  |
+| `parts`         | For multipart forms, the max number of parts (fields + files)           | Infinity  |
+| `headerPairs`   | For multipart forms, the max number of header key=>value pairs to parse | 2000      |
 
 Specifying the limits can help protect your site against denial of service (DoS) attacks.
 
